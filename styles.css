@@ -202,3 +202,195 @@ nav a:hover {
 .book-card button:hover {
     background: #0844a3;
 }
+
+.book-card button:disabled {
+    background: #6aa0ea;
+    cursor: default;
+}
+
+/* ---------- Home page ---------- */
+
+.home-panel h2 {
+    margin-top: 0;
+}
+
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.home-features .feature {
+    border: 1px solid #d3dce6;
+    border-radius: 10px;
+    padding: 16px;
+    background: #f9fbfd;
+}
+
+.home-features .feature h3 {
+    margin: 0 0 8px;
+    color: #0b57d0;
+}
+
+.home-features .feature p {
+    margin: 0;
+    color: #4b5b6a;
+}
+
+.home-cta a {
+    display: inline-block;
+    background: #0b57d0;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.home-cta a:hover {
+    background: #0844a3;
+}
+
+/* ---------- Cart page ---------- */
+
+.cart-panel h2 {
+    margin-top: 0;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    border-bottom: 1px solid #e0e6ec;
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.cart-table th {
+    color: #4b5b6a;
+    font-size: 0.9rem;
+}
+
+.cart-cover {
+    width: 46px;
+    height: 66px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-title {
+    font-weight: 600;
+}
+
+.cart-title span {
+    display: block;
+    font-size: 0.85rem;
+    color: #4b5b6a;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.cart-qty {
+    white-space: nowrap;
+}
+
+.cart-qty span {
+    display: inline-block;
+    min-width: 24px;
+    text-align: center;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #b8c4ce;
+    background: #eef2f6;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.qty-btn:hover {
+    background: #dce4ec;
+}
+
+.remove-btn {
+    border: 0;
+    background: #e53935;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.remove-btn:hover {
+    background: #c62828;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0b57d0;
+    margin-top: 16px;
+}
+
+.cart-actions {
+    text-align: right;
+    margin-top: 12px;
+}
+
+#checkout-btn {
+    border: 0;
+    background: #1b8a3a;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#checkout-btn:hover {
+    background: #146b2c;
+}
+
+#cart-message {
+    margin-top: 14px;
+}
+
+/* ---------- Form messages (login / registration) ---------- */
+
+.form-message {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.form-message:empty {
+    display: none;
+}
+
+.form-message.error {
+    background: #fdecea;
+    color: #b71c1c;
+    border: 1px solid #f5c6c2;
+}
+
+.form-message.success {
+    background: #e7f6ec;
+    color: #1b5e20;
+    border: 1px solid #b7e0c4;
+}
+
+.form-message ul {
+    margin: 0;
+    padding-left: 18px;
+}
