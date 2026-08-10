@@ -1,11 +1,3 @@
-/* ============================================================
-   Book Store - JavaScript functionality
-   - Cart handling with localStorage (add / remove / quantity)
-   - Cart count shown next to the "Cart" nav link
-   - Cart page rendering with total price
-   - Registration form validation
-   ============================================================ */
-
 var CART_KEY = "bookstore_cart";
 var USER_KEY = "bookstore_user";
 var REDIRECT_KEY = "bookstore_after_login";
