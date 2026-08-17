@@ -1,134 +1,398 @@
-body {
+/* ============================================================
+   Online Book Store - stylesheet
+   Covers Experiment 8 (fonts, styles, background images) and
+   Experiment 9 (background-repeat, A:link / A:visited / A:active / A:hover)
+   ============================================================ */
+
+/* ---------- 1. The frame container (index.html) ---------- */
+
+body.frameset {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    grid-template-rows: 128px 1fr;
+    background: #cfd8e3;
 }
 
-header,
-main {
-    margin: 16px;
-    padding: 16px;
-    background: #fff;
-    border: 2px solid #c9d3dd;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-header table {
+body.frameset iframe {
+    border: 0;
     width: 100%;
+    height: 100%;
+    display: block;
 }
 
-nav a {
+.frame-top {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    border-bottom: 3px solid #0b57d0 !important;
+}
+
+.frame-left {
+    grid-column: 1;
+    grid-row: 2;
+    border-right: 3px solid #0b57d0 !important;
+}
+
+.frame-right {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* ---------- 2. Common look of every framed page ---------- */
+
+body.frame-body {
+    margin: 0;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: 14px;
+    color: #1f2933;
+}
+
+/* Background image for the whole page, repeated in both directions
+   (background-repeat demonstration).  The image is a small tiled SVG
+   so the site also works without an internet connection. */
+body.right-frame {
+    background-color: #f4f6f8;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 39.5H40M39.5 0V40' stroke='%23dde5ee' stroke-width='1'/></svg>");
+    background-repeat: repeat;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+/* ---------- 3. Link styles (A:link, A:visited, A:active, A:hover) ---------- */
+
+a:link {
     color: #0b57d0;
     text-decoration: none;
-    font-weight: 600;
-    margin: 0 12px;
+    font-weight: bold;
 }
 
-nav a:hover {
+a:visited {
+    color: #6a3fa0;
+}
+
+a:hover {
+    color: #ffffff;
+    background-color: #0b57d0;
     text-decoration: underline;
 }
 
-.form-panel {
-    max-width: 420px;
-    margin: 24px auto;
-    padding: 24px;
-    background: #fff;
-    border: 2px solid #c9d3dd;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+a:active {
+    color: #e53935;
 }
 
-.form-panel h2 {
-    margin-top: 0;
-}
+/* ---------- 4. Top frame ---------- */
 
-.form-group {
-    margin-bottom: 16px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-.form-group input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1px solid #b8c4ce;
-    border-radius: 6px;
-    font-size: 1rem;
-}
-
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1px solid #b8c4ce;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-family: inherit;
-}
-
-.inline-options,
-.dob-row {
+body.top-frame {
+    background-color: #ffffff;
+    /* A single, non-repeating background image behind the banner only,
+       so it never runs under the blue navigation bar. */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><circle cx='60' cy='60' r='52' fill='none' stroke='%23eaf0f8' stroke-width='16'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 24px top -18px;
+    /* banner on top, navigation bar pinned to the bottom of the frame */
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-.checkbox-grid {
+.banner {
+    border-collapse: collapse;
+    table-layout: fixed;
+    flex: 1 1 auto;
+}
+
+.banner-logo,
+.banner-spacer {
+    width: 110px;
+}
+
+.banner-logo {
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 0 6px 12px;
+}
+
+.banner-logo img {
+    height: 62px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.banner-name {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.banner-name h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    color: #0b3d91;
+    letter-spacing: 0.5px;
+}
+
+.banner-name h2 {
+    margin: 2px 0 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: normal;
+    color: #4b5b6a;
+}
+
+/* Navigation bar in the top frame */
+.top-nav {
+    background: #0b3d91;
+    text-align: center;
+    padding: 8px 0;
+    margin-top: auto;
+    flex: 0 0 auto;
+}
+
+.top-nav a:link,
+.top-nav a:visited {
+    display: inline-block;
+    color: #ffffff;
+    padding: 6px 18px;
+    margin: 0 2px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.top-nav a:hover {
+    background: #ffffff;
+    color: #0b3d91;
+    text-decoration: none;
+}
+
+.top-nav a:active {
+    background: #ffd54f;
+    color: #0b3d91;
+}
+
+/* ---------- 5. Left frame ---------- */
+
+body.left-frame {
+    background: #e8eef6;
+    padding: 14px 10px;
+    box-sizing: border-box;
+}
+
+body.left-frame h3 {
+    margin: 0 0 10px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    color: #0b3d91;
+    border-bottom: 2px solid #0b57d0;
+    padding-bottom: 6px;
+}
+
+.branch-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.branch-list li {
+    margin-bottom: 6px;
+}
+
+.branch-list a:link,
+.branch-list a:visited {
+    display: block;
+    padding: 9px 12px;
+    background: #ffffff;
+    border: 1px solid #c3d0e0;
+    border-radius: 5px;
+    color: #0b3d91;
+    text-decoration: none;
+}
+
+.branch-list a:hover {
+    background: #0b57d0;
+    color: #ffffff;
+    border-color: #0b57d0;
+    text-decoration: none;
+}
+
+.branch-list a.active:link,
+.branch-list a.active:visited {
+    background: #0b3d91;
+    color: #ffffff;
+    border-color: #0b3d91;
+}
+
+.branch-list.secondary a:link,
+.branch-list.secondary a:visited {
+    background: transparent;
+    border-style: dashed;
+    font-weight: normal;
+}
+
+/* ---------- 6. Panels used by the right-frame pages ---------- */
+
+.panel {
+    background: #ffffff;
+    border: 1px solid #c9d3dd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    margin: 0 0 14px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #0b3d91;
+    border-bottom: 2px solid #e0e6ec;
+    padding-bottom: 8px;
+}
+
+.panel h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #0b3d91;
+}
+
+/* ---------- 7. Home page ---------- */
+
+.home-panel p {
+    line-height: 1.7;
+}
+
+.home-features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
 }
 
-.inline-options label,
-.dob-row select {
-    flex: 1 1 120px;
+.home-features .feature {
+    border: 1px solid #d3dce6;
+    border-radius: 8px;
+    padding: 14px;
+    background: #f9fbfd;
 }
 
-.checkbox-grid label {
-    width: 100%;
+.home-features .feature h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+}
+
+.home-features .feature p {
+    margin: 0;
+    color: #4b5b6a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.how-to {
+    line-height: 1.9;
+    color: #33414f;
+}
+
+.home-cta a:link,
+.home-cta a:visited {
+    display: inline-block;
+    background: #0b57d0;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.home-cta a:hover {
+    background: #0b3d91;
+    color: #ffffff;
+}
+
+/* ---------- 8. Forms (login / registration) ---------- */
+
+.form-panel {
+    max-width: 460px;
+}
+
+.form-panel.wide {
+    max-width: 620px;
+}
+
+.form-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.form-table td {
+    vertical-align: top;
+    padding-right: 14px;
+}
+
+.form-table td:first-child {
+    font-weight: bold;
+    color: #33414f;
+    white-space: nowrap;
+    padding-top: 8px;
+}
+
+.form-table input[type="text"],
+.form-table input[type="password"],
+.form-table textarea,
+.form-table select {
+    padding: 8px 10px;
+    border: 1px solid #b8c4ce;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fdfefe;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="password"]:focus,
+.form-table textarea:focus,
+.form-table select:focus {
+    outline: 2px solid #0b57d0;
+    border-color: #0b57d0;
 }
 
 .inline-options label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 400;
-    margin-bottom: 0;
+    display: inline-block;
+    margin-right: 16px;
+    padding-top: 8px;
+    font-weight: normal;
 }
 
-.inline-options input[type="radio"],
-.inline-options input[type="checkbox"] {
-    margin: 0;
+.checkbox-grid label {
+    min-width: 110px;
 }
 
-.form-group textarea {
-    min-height: 90px;
-    resize: vertical;
+.dob-row select {
+    margin-right: 8px;
 }
 
 .button-row {
-    display: flex;
-    gap: 12px;
+    padding-top: 6px;
 }
 
 .button-row button {
-    padding: 10px 16px;
+    padding: 9px 20px;
     border: 0;
-    border-radius: 6px;
-    font-size: 1rem;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .button-row button[type="submit"] {
     background: #0b57d0;
-    color: #fff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.button-row button[type="submit"]:hover {
+    background: #0b3d91;
 }
 
 .button-row button[type="reset"] {
@@ -136,162 +400,142 @@ nav a:hover {
     color: #1f2933;
 }
 
-.catalogue-panel {
-    padding: 8px;
+.button-row button[type="reset"]:hover {
+    background: #c3d0e0;
 }
 
-.catalogue-panel h2 {
-    margin: 0 0 16px;
-}
-
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-}
-
-.book-card {
-    border: 1px solid #d3dce6;
-    border-radius: 10px;
-    padding: 12px;
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.book-card img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.book-card h3 {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.book-card h3 span {
-    display: block;
-    font-size: 0.9rem;
+.form-note {
+    margin-top: 18px;
+    font-size: 13px;
     color: #4b5b6a;
-    font-weight: 500;
-    margin-top: 3px;
 }
 
-.book-card .price {
-    margin: 10px 0 12px;
-    color: #0b57d0;
-    font-weight: 700;
+/* ---------- 9. Catalogue ---------- */
+
+.catalogue-hint {
+    margin-top: 0;
+    font-size: 13px;
+    color: #4b5b6a;
+    font-style: italic;
 }
 
-.book-card button {
-    margin-top: auto;
-    border: 0;
-    border-radius: 6px;
-    background: #0b57d0;
-    color: #fff;
+.branch-block {
+    margin-bottom: 28px;
+}
+
+.branch-block h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.book-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+.book-table th {
+    background: #0b3d91;
+    color: #ffffff;
+    text-align: left;
     padding: 10px;
-    font-size: 0.95rem;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+}
+
+.book-table td {
+    border-bottom: 1px solid #e0e6ec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.book-table tr:nth-child(even) td {
+    background: #f7f9fc;
+}
+
+.book-table tr:hover td {
+    background: #eaf1fb;
+}
+
+.cover {
+    width: 62px;
+    height: 86px;
+    border: 1px solid #c9d3dd;
+    border-radius: 3px;
+    display: block;
+}
+
+.book-title {
+    font-weight: bold;
+    color: #0b3d91;
+}
+
+.price {
+    color: #b8531a;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.add-btn {
+    border: 0;
+    border-radius: 5px;
+    background: #0b57d0;
+    color: #ffffff;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-family: inherit;
     cursor: pointer;
+    white-space: nowrap;
 }
 
-.book-card button:hover {
-    background: #0844a3;
+.add-btn:hover {
+    background: #0b3d91;
 }
 
-.book-card button:disabled {
-    background: #6aa0ea;
+.add-btn:disabled {
+    background: #1b8a3a;
     cursor: default;
 }
 
-/* ---------- Home page ---------- */
-
-.home-panel h2 {
-    margin-top: 0;
-}
-
-.home-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin: 24px 0;
-}
-
-.home-features .feature {
-    border: 1px solid #d3dce6;
-    border-radius: 10px;
-    padding: 16px;
-    background: #f9fbfd;
-}
-
-.home-features .feature h3 {
-    margin: 0 0 8px;
-    color: #0b57d0;
-}
-
-.home-features .feature p {
-    margin: 0;
-    color: #4b5b6a;
-}
-
-.home-cta a {
-    display: inline-block;
-    background: #0b57d0;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: 600;
-}
-
-.home-cta a:hover {
-    background: #0844a3;
-}
-
-/* ---------- Cart page ---------- */
-
-.cart-panel h2 {
-    margin-top: 0;
-}
+/* ---------- 10. Cart ---------- */
 
 .cart-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.cart-table th,
+.cart-table th {
+    background: #0b3d91;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px;
+    font-size: 13px;
+}
+
 .cart-table td {
     border-bottom: 1px solid #e0e6ec;
-    padding: 12px 10px;
-    text-align: left;
+    padding: 10px;
     vertical-align: middle;
 }
 
-.cart-table th {
-    color: #4b5b6a;
-    font-size: 0.9rem;
-}
-
 .cart-cover {
-    width: 46px;
+    width: 48px;
     height: 66px;
-    object-fit: cover;
-    border-radius: 4px;
+    border: 1px solid #c9d3dd;
+    border-radius: 3px;
+    display: block;
 }
 
 .cart-title {
-    font-weight: 600;
+    font-weight: bold;
+    color: #0b3d91;
 }
 
 .cart-title span {
     display: block;
-    font-size: 0.85rem;
+    font-size: 12px;
     color: #4b5b6a;
-    font-weight: 400;
+    font-weight: normal;
     margin-top: 2px;
 }
 
@@ -301,59 +545,61 @@ nav a:hover {
 
 .cart-qty span {
     display: inline-block;
-    min-width: 24px;
+    min-width: 26px;
     text-align: center;
 }
 
 .qty-btn {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border: 1px solid #b8c4ce;
     background: #eef2f6;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 15px;
     cursor: pointer;
 }
 
 .qty-btn:hover {
-    background: #dce4ec;
+    background: #d9e2ec;
 }
 
 .remove-btn {
     border: 0;
     background: #e53935;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 13px;
+    font-family: inherit;
 }
 
 .remove-btn:hover {
-    background: #c62828;
+    background: #b71c1c;
 }
 
 .cart-total {
     text-align: right;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #0b57d0;
-    margin-top: 16px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #0b3d91;
+    margin-top: 14px;
 }
 
 .cart-actions {
     text-align: right;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 #checkout-btn {
     border: 0;
     background: #1b8a3a;
-    color: #fff;
-    padding: 12px 22px;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
+    color: #ffffff;
+    padding: 11px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
     cursor: pointer;
 }
 
@@ -365,13 +611,14 @@ nav a:hover {
     margin-top: 14px;
 }
 
-/* ---------- Form messages (login / registration) ---------- */
+/* ---------- 11. Messages ---------- */
 
 .form-message {
-    margin-bottom: 16px;
-    padding: 12px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    margin-bottom: 14px;
+    padding: 11px 14px;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .form-message:empty {
@@ -393,4 +640,56 @@ nav a:hover {
 .form-message ul {
     margin: 0;
     padding-left: 18px;
+}
+
+/* ---------- 12. Media query - narrow screens ---------- */
+
+@media screen and (max-width: 720px) {
+    body.frameset {
+        grid-template-columns: 130px 1fr;
+        grid-template-rows: 150px 1fr;
+    }
+
+    .banner-name h1 {
+        font-size: 15px;
+    }
+
+    .top-nav a:link,
+    .top-nav a:visited {
+        padding: 5px 9px;
+        font-size: 12px;
+    }
+
+    .book-table th:nth-child(4),
+    .book-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body.frameset {
+        grid-template-columns: 108px 1fr;
+        grid-template-rows: 190px 1fr;
+    }
+
+    .banner-logo,
+    .banner-spacer {
+        width: 64px;
+    }
+
+    .banner-logo {
+        padding-left: 6px;
+    }
+
+    .banner-logo img {
+        height: 44px;
+    }
+
+    .banner-name h1 {
+        font-size: 13px;
+    }
+
+    .banner-name h2 {
+        font-size: 12px;
+    }
 }

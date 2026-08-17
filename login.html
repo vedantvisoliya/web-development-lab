@@ -2,56 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Book Store</title>
+    <title>Login - Online Book Store</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <table width="100%" cellspacing="0" cellpadding="8">
-            <tr>
-                <td align="right" width="33%">
-                    <img src="bookstore.png" alt="Book Store Logo" height="45">
-                </td>
-                <td align="center" width="34%">
-                    <h1>Book Store</h1>
-                </td>
-                <td width="33%"></td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <nav>
-                        <a href="index.html">Home</a>
-                        <a href="login.html">Login</a>
-                        <a href="registration.html">Registration</a>
-                        <a href="catalogue.html">Catalogue</a>
-                        <a href="cart.html">Cart</a>
-                    </nav>
-                </td>
-            </tr>
-        </table>
-    </header>
 
-    <main>
-        <section class="form-panel">
-            <h2>Login</h2>
-            <div id="form-message"></div>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                </div>
-                <div class="button-row">
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
-                </div>
-            </form>
-        </section>
-    </main>
+<!-- LOGIN PAGE (Experiment 2) - loads in the right frame. -->
+<body class="frame-body right-frame">
+
+    <section class="panel form-panel">
+        <h2>Login Page</h2>
+
+        <div id="form-message"></div>
+
+        <form id="login-form">
+            <table class="form-table">
+                <tr>
+                    <td><label for="username">User Name :</label></td>
+                    <td><input type="text" id="username" name="username" size="24"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password :</label></td>
+                    <td><input type="password" id="password" name="password" size="24"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="button-row">
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <p class="form-note">
+            New here? <a href="registration.html">Create an account on the Registration page</a>.
+        </p>
+    </section>
 
     <script src="script.js"></script>
 </body>

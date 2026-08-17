@@ -3,71 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store</title>
+    <title>Online Book Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/jpeg" href="glb_logo.jpg">
 </head>
-<body>
-    <header>
-        <table width="100%" cellspacing="0" cellpadding="8">
-            <tr>
-                <td align="right" width="33%">
-                    <img src="bookstore.png" alt="Book Store Logo" height="45">
-                </td>
-                <td align="center" width="34%">
-                    <h1>Book Store</h1>
-                </td>
-                <td width="33%"></td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <nav>
-                        <a href="#home">Home</a>
-                        <a href="login.html">Login</a>
-                        <a href="registration.html">Registration</a>
-                        <a href="catalogue.html">Catalogue</a>
-                        <a href="cart.html">Cart</a>
-                    </nav>
-                </td>
-            </tr>
-        </table>
-    </header>
 
-    <main>
-        <section class="home-panel">
-            <h2>Welcome to our Book Store</h2>
-            <p>
-                Your one-stop online destination for discovering great books.
-                Browse our growing collection of novels, classics and more,
-                add your favourites to the cart, and check out with ease.
-            </p>
-            <p>
-                Use the navigation bar above to explore the <strong>Catalogue</strong>,
-                create an account on the <strong>Registration</strong> page,
-                or <strong>Login</strong> to continue shopping.
-            </p>
+<!--
+    HOME PAGE - three frames (Experiment 1)
+      Top frame   : logo, college name and the main navigation links
+      Left frame  : branch links - CSE, ECE, EEE, CIVIL
+      Right frame : every page opened from the top / left frame loads here.
+                    Initially it shows the description of the web site.
+-->
+<body class="frameset">
 
-            <div class="home-features">
-                <div class="feature">
-                    <h3>Wide Selection</h3>
-                    <p>Handpicked titles across many genres, updated regularly.</p>
-                </div>
-                <div class="feature">
-                    <h3>Easy Cart</h3>
-                    <p>Add books to your cart and manage quantities in a click.</p>
-                </div>
-                <div class="feature">
-                    <h3>Best Prices</h3>
-                    <p>Affordable prices on every book, all in one place.</p>
-                </div>
-            </div>
+    <iframe class="frame-top" name="topFrame" src="top.html" title="Top frame"></iframe>
 
-            <p class="home-cta">
-                <a href="catalogue.html">Browse the Catalogue &rarr;</a>
-            </p>
-        </section>
-    </main>
+    <iframe class="frame-left" name="leftFrame" src="left.html" title="Left frame"></iframe>
 
-    <script src="script.js"></script>
+    <iframe class="frame-right" name="rightFrame" src="home.html" title="Right frame"></iframe>
+
+    <script>
+        /* If a content page is opened on its own it sends the visitor back here
+           as index.html?page=login.html, so the frames are never lost. */
+        (function () {
+            var allowed = [
+                "home.html", "login.html", "registration.html",
+                "catalogue.html", "cart.html"
+            ];
+
+            var query = window.location.search;
+            var page = "";
+            var branch = "";
+
+            if (query.indexOf("page=") !== -1) {
+                page = query.split("page=")[1].split("&")[0];
+            }
+            if (query.indexOf("branch=") !== -1) {
+                branch = query.split("branch=")[1].split("&")[0];
+            }
+
+            for (var i = 0; i < allowed.length; i++) {
+                if (allowed[i] === page) {
+                    var url = page;
+                    if (branch !== "") {
+                        url = page + "?branch=" + branch;
+                    }
+                    document.getElementsByName("rightFrame")[0].src = url;
+                    break;
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
